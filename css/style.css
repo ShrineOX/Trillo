@@ -213,7 +213,8 @@ body {
     padding: 2rem;
     opacity: 0;
     height: 0;
-    transition: all 0.3s; }
+    transition: all 0.3s;
+    z-index: 10; }
     .user-nav__user-overlay > ul {
       list-style: none; }
       .user-nav__user-overlay > ul li:hover {
@@ -296,9 +297,32 @@ body {
 
 .gallery {
   display: flex; }
+  .gallery__item {
+    position: relative;
+    overflow: hidden; }
   .gallery__photo {
     width: 100%;
-    display: block; }
+    display: block;
+    transition: transform 1s; }
+    .gallery__photo:hover {
+      transform: scale(1.4);
+      transition: transform 15s; }
+  .gallery__caption {
+    color: var(--color-grey-light-2);
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.2rem 1rem;
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    position: absolute;
+    bottom: 0rem;
+    left: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s; }
+  .gallery__item:hover .gallery__caption {
+    bottom: 1rem;
+    visibility: visible;
+    opacity: 1; }
 
 .overview {
   display: flex;
@@ -311,6 +335,9 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem 3rem; }
+    .overview__heading a {
+      text-decoration: none;
+      color: inherit; }
   .overview__icon-star, .overview__icon-location {
     width: 1.75rem;
     height: 1.75rem;
