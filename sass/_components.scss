@@ -16,7 +16,8 @@
   @media only screen and (max-width: $bp-smallest) {
     order: 1;
     flex: 0 0 100%;
-    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    // flex-wrap: wrap;
   }
 
   &__input {
@@ -172,7 +173,6 @@
     // Show items in row
     display: flex;
     flex-direction: row;
-
     margin-top: 0;
   }
 
@@ -190,6 +190,7 @@
 
     @media only screen and (max-width: $bp-medium) {
       flex: 1;
+      padding: 0;
     }
   }
 
@@ -234,7 +235,7 @@
     @media only screen and (max-width: $bp-small) {
       flex-direction: column;
       align-items: center;
-      padding: 0;
+      padding: 0.5rem;
     }
   }
   &__icon {
@@ -317,6 +318,11 @@
   border-bottom: var(--line);
   background-color: #fff;
 
+  @media only screen and (max-width: $bp-smallest) {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
   &__heading {
     font-size: 2.25rem;
     font-weight: 300;
@@ -328,6 +334,11 @@
       text-decoration: none;
       color: inherit;
     }
+
+    @media only screen and (max-width: $bp-smallest) {
+      font-size: 1.8rem;
+      padding: 1rem 2rem;
+    }
   }
 
   &__icon-star,
@@ -337,10 +348,18 @@
     fill: var(--color-primary);
   }
 
+  &__icon-star {
+    @media only screen and (max-width: $bp-smallest) {
+      width: 0.95rem;
+      height: 0.95rem;
+    }
+  }
+
   &__stars {
     margin-right: auto;
     display: flex;
   }
+
   &__icon-location {
     margin-right: 0.5rem;
   }
@@ -362,15 +381,25 @@
     justify-content: space-around;
     background-color: var(--color-primary);
     color: #fff;
+
+    @media only screen and (max-width: $bp-smallest) {
+      padding: 0 1.5rem;
+    }
   }
 
   &__rating-average {
     font-size: 2.25rem;
     font-weight: 300;
+    @media only screen and (max-width: $bp-smallest) {
+      font-size: 1.8rem;
+    }
   }
   &__rating-count {
     font-size: 1.2rem;
     text-transform: uppercase;
+    @media only screen and (max-width: $bp-smallest) {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -443,9 +472,21 @@
   justify-content: space-between;
   align-items: center;
 
+  @media only screen and (max-width: $bp-smallest) {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: flex-start;
+    width: max-content;
+    margin: 3rem auto;
+  }
+
   &__item {
     flex: 0 0 50%;
     margin-bottom: 0.7rem;
+
+    @media only screen and (max-width: $bp-smallest) {
+      flex: 0 0 auto;
+    }
   }
 
   &__item::before {
@@ -492,6 +533,18 @@
   &__count {
     margin-right: auto;
   }
+
+  @media only screen and (max-width: $bp-medium) {
+    flex-direction: column;
+
+    &__count {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+    &__photo:not(:last-of-type) {
+      margin-right: 0.5rem;
+    }
+  }
 }
 
 /////////////////////////////
@@ -520,6 +573,13 @@
     top: -2rem;
     left: -1rem;
     z-index: 1;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    width: 45%;
+  }
+  @media only screen and (max-width: $bp-smallest) {
+    width: 100%;
   }
 
   &__text {
@@ -560,6 +620,13 @@
   }
 }
 
+// User review button - the show all button
+// .user-review__btn {
+//   @media only screen and (max-width: $bp-small) {
+
+//   }
+// }
+
 //////////////////
 // CALL TO ACTION
 .cta {
@@ -571,6 +638,10 @@
     font-size: 2rem;
     font-weight: 300;
     margin-bottom: 2.5rem;
+
+    @media only screen and (max-width: $bp-smallest) {
+      font-size: 1.5rem;
+    }
   }
 }
 
