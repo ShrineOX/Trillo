@@ -12,12 +12,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 100;
 
   @media only screen and (max-width: $bp-smallest) {
     order: 1;
     flex: 0 0 100%;
     margin-top: 0.5rem;
-    // flex-wrap: wrap;
+    // fix the position of the negative margin right of the input field
+    transform: translateX(-0.4rem);
   }
 
   &__input {
@@ -31,12 +34,13 @@
     margin-right: -2.8rem;
 
     width: 90%;
-    transition: all 0.3s;
+    transition: all 0.3s 0.3s;
 
     &:focus {
       outline: none;
       width: 100%;
       background-color: var(--color-grey-light-3);
+      transition: all 0.3s;
     }
 
     &::placeholder {
@@ -45,8 +49,13 @@
     }
   }
 
-  &__input:focus + &__button {
+  &__input:focus ~ &__button {
     background-color: var(--color-grey-light-3);
+  }
+  &__input:focus ~ .popup {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s 0.4s;
   }
 
   &__button {
@@ -67,6 +76,61 @@
     height: 2rem;
     width: 2rem;
     fill: var(--color-grey-dark-3);
+  }
+}
+
+///////////////////////////////////
+// POPUP
+// SUGGESTION PANEL
+.popup {
+  position: absolute;
+  top: 100%;
+
+  background-color: var(--color-grey-light-3);
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  color: var(--color-grey-dark-3);
+
+  // Setting for search__input popup
+  &--search {
+    z-index: -1;
+    margin-left: 1rem;
+    top: 50%;
+  }
+
+  &__list {
+    list-style: none;
+    padding-top: 2rem;
+  }
+
+  &__item {
+    margin: 1rem 0;
+    cursor: pointer;
+    padding: 0.5rem 2.5rem;
+
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background-color: var(--color-grey-light-1);
+    }
+
+    svg {
+      height: 2rem;
+      width: 2rem;
+      fill: currentColor;
+
+      &:hover {
+        fill: var(--color-primary);
+      }
+    }
+  }
+
+  &__text {
+    margin-right: auto;
+    margin-left: 2rem;
   }
 }
 
