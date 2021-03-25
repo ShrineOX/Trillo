@@ -53,8 +53,7 @@
     background-color: var(--color-grey-light-3);
   }
   &__input:focus ~ .popup {
-    opacity: 1;
-    visibility: visible;
+    @include active-popup;
     transition: all 0.3s 0.4s;
   }
 
@@ -81,13 +80,12 @@
 
 ///////////////////////////////////
 // POPUP
-// SUGGESTION PANEL
 .popup {
   position: absolute;
   top: 100%;
-
+  left: 0;
   background-color: var(--color-grey-light-3);
-  width: 100%;
+  width: max-content;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s;
@@ -96,13 +94,22 @@
   // Setting for search__input popup
   &--search {
     z-index: -1;
-    margin-left: 1rem;
+    margin-left: 0.8rem;
     top: 50%;
+    left: auto;
+    width: 100%;
+
+    &__list {
+      padding-top: 2rem;
+    }
+  }
+  &--middle {
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   &__list {
     list-style: none;
-    padding-top: 2rem;
   }
 
   &__item {
@@ -139,6 +146,7 @@
 .user-nav {
   align-self: stretch;
   display: flex;
+  z-index: 100;
 
   & > * {
     padding: 0 2rem;
@@ -155,6 +163,11 @@
 
   &__icon-box {
     position: relative;
+
+    // show bookmark and messages popup
+    &:hover .popup {
+      @include active-popup;
+    }
   }
 
   &__icon {
@@ -193,37 +206,8 @@
     position: relative;
   }
 
-  &__user:hover &__user-overlay {
-    height: auto;
-    opacity: 1;
-  }
-
-  &__user-overlay {
-    position: absolute;
-    top: 100%;
-    width: max-content;
-    right: 0;
-    background-color: var(--color-grey-light-1);
-    box-shadow: var(--shadow-dark);
-    border-radius: 3px;
-    padding: 2rem;
-
-    opacity: 0;
-    height: 0;
-    transition: all 0.3s;
-    z-index: 10;
-
-    & > ul {
-      list-style: none;
-
-      li:hover {
-        background-color: var(--color-grey-light-4);
-      }
-
-      li:not(:last-child) {
-        border-bottom: var(--line);
-      }
-    }
+  &__user:hover .popup {
+    @include active-popup;
   }
 }
 

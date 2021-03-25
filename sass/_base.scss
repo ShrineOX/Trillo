@@ -51,3 +51,9 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
 }
+
+@mixin active-popup {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s 0.2s;
+}

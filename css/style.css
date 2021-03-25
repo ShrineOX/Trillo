@@ -171,6 +171,7 @@ body {
   .search__input:focus ~ .popup {
     opacity: 1;
     visibility: visible;
+    transition: all 0.3s 0.2s;
     transition: all 0.3s 0.4s; }
   .search__button {
     border: none;
@@ -188,19 +189,26 @@ body {
 .popup {
   position: absolute;
   top: 100%;
+  left: 0;
   background-color: var(--color-grey-light-3);
-  width: 100%;
+  width: max-content;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s;
   color: var(--color-grey-dark-3); }
   .popup--search {
     z-index: -1;
-    margin-left: 1rem;
-    top: 50%; }
+    margin-left: 0.8rem;
+    top: 50%;
+    left: auto;
+    width: 100%; }
+    .popup--search__list {
+      padding-top: 2rem; }
+  .popup--middle {
+    left: 50%;
+    transform: translateX(-50%); }
   .popup__list {
-    list-style: none;
-    padding-top: 2rem; }
+    list-style: none; }
   .popup__item {
     margin: 1rem 0;
     cursor: pointer;
@@ -221,7 +229,8 @@ body {
 
 .user-nav {
   align-self: stretch;
-  display: flex; }
+  display: flex;
+  z-index: 100; }
   .user-nav > * {
     padding: 0 2rem;
     height: 100%;
@@ -232,6 +241,10 @@ body {
     background-color: var(--color-grey-light-2); }
   .user-nav__icon-box {
     position: relative; }
+    .user-nav__icon-box:hover .popup {
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.3s 0.2s; }
   .user-nav__icon {
     height: 2.25rem;
     width: 2.25rem;
@@ -257,28 +270,10 @@ body {
     margin-right: 1rem; }
   .user-nav__user {
     position: relative; }
-  .user-nav__user:hover .user-nav__user-overlay {
-    height: auto;
-    opacity: 1; }
-  .user-nav__user-overlay {
-    position: absolute;
-    top: 100%;
-    width: max-content;
-    right: 0;
-    background-color: var(--color-grey-light-1);
-    box-shadow: var(--shadow-dark);
-    border-radius: 3px;
-    padding: 2rem;
-    opacity: 0;
-    height: 0;
-    transition: all 0.3s;
-    z-index: 10; }
-    .user-nav__user-overlay > ul {
-      list-style: none; }
-      .user-nav__user-overlay > ul li:hover {
-        background-color: var(--color-grey-light-4); }
-      .user-nav__user-overlay > ul li:not(:last-child) {
-        border-bottom: var(--line); }
+  .user-nav__user:hover .popup {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s 0.2s; }
 
 .side-nav {
   margin-top: 5rem;
